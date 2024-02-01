@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.nameSvc }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: ClusterIP
+  selector:
+    app:  {{ .Values.nameDeploy }}
+  ports:
+    - port: {{ .Values.container.externalPort }}
+      targetPort: {{ .Values.container.innerPort }} # порт в нутри
+
+      #      nodePort: 32001 # Порт который пробрасывается прям в миникубу и начинается с 32000
+      protocol: TCP

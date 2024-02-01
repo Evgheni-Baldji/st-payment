@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nameDeploy }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.nameDeploy }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.namePod }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.namePod }}
+    spec:
+      containers:
+        - name: {{ .Values.namePod }}
+          image: {{ .Values.container.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.container.innerPort }}
+              protocol: TCP
+          resources:
+            requests:
+              memory: 400Mi
+              cpu: 250m
+            limits:
+              memory: 800Mi
+              cpu: 1000m
+#            readinessProbe:
+#              initialDelaySeconds: 240
+#              httpGet:
+#                path: /actuator/health
+#                port: 8080
+#            livenessProbe:
+#              initialDelaySeconds: 240
+#              periodSeconds: 3
+#              httpGet:
+#                path: /actuator/health
+#                port: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%

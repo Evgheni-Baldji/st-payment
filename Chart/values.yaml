@@ -1,0 +1,17 @@
+nameDeploy: payment-service
+namespace: stripe-demo-marketplace
+nameSvc: payment-service-svc
+nameIngress: payment-service-ingress
+ingressPath: /account
+namePod: payment-service-pod
+image: st-payment
+container:
+  image: payment:latest
+  innerPort: 8080
+  externalPort: 80
+replicaCount: 2
+
+spec:
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 75
