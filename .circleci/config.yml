@@ -27,7 +27,7 @@ jobs:
 #      - run: sudo chmod +r /etc/ssh/ssh_known_hosts
       - run:
           name: Deploy over SSH
-          command: sshpass -p $SSH_PASSWORD  ssh $SSH_USER@$SSH_HOST -vvv
+          command: sshpass -p scGYyuDXgEtf  ssh root@185.215.186.235 -vvv
 
 
 
