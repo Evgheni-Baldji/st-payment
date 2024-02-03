@@ -23,9 +23,10 @@ jobs:
       - image:  cimg/base:2022.09
     steps:
       - checkout
+      - run: sudo apt-get update && sudo apt-get install sshpass
       - run:
           name: Deploy over SSH
-          command: ssh $SSH_USER@$SSH_HOST -vvv
+          command: sudo sshpass -p $SSH_PASSWORD  ssh  -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST -vvv "docker ps"
 
 
 
