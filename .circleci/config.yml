@@ -20,7 +20,7 @@ jobs:
           command: mvn clean package -DskipTests
   deploy:
     machine:
-      image: cimg/base:default
+      image: cimg/base
     steps:
       - checkout
       - run :
