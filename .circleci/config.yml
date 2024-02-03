@@ -15,8 +15,6 @@ jobs:
       - run:
           name: Run tests
           command: mvn  clean test
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           name: Package
           command: mvn clean package -DskipTests
