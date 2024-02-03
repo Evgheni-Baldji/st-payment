@@ -20,7 +20,7 @@ jobs:
           command: mvn clean package -DskipTests
   deploy:
     docker:
-      - image: cimg/base:2022.09
+      - image: ubuntu
     steps:
       - checkout
       - run: sudo apt-get update && sudo apt-get install sshpass && apt-get install -y openssh-server
