@@ -24,7 +24,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update && sudo apt-get install sshpass
-      - run: sudo chmod +r /etc/ssh/ssh_known_hosts
+#      - run: sudo chmod +r /etc/ssh/ssh_known_hosts
       - run:
           name: Deploy over SSH
           command: sshpass -p $SSH_PASSWORD  ssh $SSH_USER@$SSH_HOST -vvv
