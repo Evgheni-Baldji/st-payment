@@ -26,7 +26,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install sshpass
       - run:
           name: Deploy over SSH
-          command: ssh  sshpass -p ${SSH_PASSWORD}  ssh ${SSH_USER}@${SSH_HOST} "cd ../path/to/your/project;  git pull; pm2 start hello_sts";
+          command: sshpass -p ${SSH_PASSWORD}  ssh ${SSH_USER}@${SSH_HOST} "cd ../path/to/your/project;  git pull; pm2 start hello_sts";
 
 
 
