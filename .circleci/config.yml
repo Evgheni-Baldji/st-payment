@@ -19,7 +19,7 @@ jobs:
           name: Package
           command: mvn clean package -DskipTests
   deploy:
-    machine:
+    docker:
       image: cimg/base
     steps:
       - checkout
