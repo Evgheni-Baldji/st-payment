@@ -24,6 +24,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update && sudo apt-get install sshpass
+      - run: echo  $SSH_USER
       - run:
           name: Deploy over SSH
           command:   ssh $SSH_USER@$SSH_HOST "cd /opt/test;  git pull; ";
