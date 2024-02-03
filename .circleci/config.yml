@@ -15,24 +15,22 @@ jobs:
       - run:
           name: Run tests
           command: mvn  clean test
+      - save_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           name: Package
           command: mvn clean package -DskipTests
+deploy:
+  machine:
+    enabled: true
+  steps:
+    - checkout
+    - run:
+        name: Deploy over SSH
+        command: ssh -p 22 root@root@185.215.186.235 "cd /opt/test; git pull; pm2 start hello_sts";
 
-      - run:
-          command: mvn package
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-      - run:
-          name: found jenkins config
-          command: ':'
+
+
 workflows:
   build-and-test:
     jobs:
