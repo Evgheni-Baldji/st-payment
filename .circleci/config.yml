@@ -29,7 +29,7 @@ jobs:
       - run: echo  $S
       - run:
           name: Deploy over SSH
-          command:   ssh $SSH_USER@$SSH_HOST "cd /opt/test;  git pull; ";
+          command: sshpass -p $SSH_PASSWORD  ssh $SSH_USER@$SSH_HOST "cd /opt/test;  git pull; ";
 
 
 
