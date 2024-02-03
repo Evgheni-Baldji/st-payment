@@ -38,6 +38,7 @@ workflows:
       - deploy:
           filters:
             branches:
-              - main
+                only:
+                  - main
           requires:
             - test-java
