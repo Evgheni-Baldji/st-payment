@@ -30,7 +30,7 @@ deploy:
 
 
 workflows:
-  build-and-deploy:
+  build-and-test:
     jobs:
      - test-java
      - deploy:
