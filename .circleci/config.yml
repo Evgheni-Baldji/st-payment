@@ -1,5 +1,6 @@
 # This config was automatically generated from your source code
 # Stacks detected: cicd:jenkins:.,deps:java:.
+
 version: 2.1
 jobs:
   test-java:
