@@ -20,9 +20,12 @@ jobs:
           command: mvn clean package -DskipTests
   deploy:
     machine:
-      enabled: true
+      image: ubuntu-2204:2023.07.2
     steps:
       - checkout
+      - run :
+          name: Install sshpass
+          command: apt-get install sshpass
       - run:
           name: Deploy over SSH
           command: ssh  root@185.215.186.235 "cd ../path/to/your/project;  git pull; pm2 start hello_sts";
