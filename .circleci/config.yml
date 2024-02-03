@@ -30,9 +30,9 @@ deploy:
 
 
 workflows:
-  build-and-test:
+  build-and-deploy:
     jobs:
-      - test-java
-    # - deploy:
-    #     requires:
-    #       - test-java
+     - test-java
+     - deploy:
+         requires:
+           - build
