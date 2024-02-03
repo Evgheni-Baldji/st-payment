@@ -24,7 +24,6 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update && sudo apt-get install sshpass && sudo apt-get install -y openssh-server
-      - run: sudo ed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
       - run: sudo mkdir /var/run/sshd
       - run: sudo /usr/sbin/sshd -D
 #      - run: sudo chmod +r /etc/ssh/ssh_known_hosts
