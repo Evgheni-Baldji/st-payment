@@ -23,11 +23,10 @@ jobs:
       - image: cimg/base:2022.09
     steps:
       - checkout
-      - run: sudo apt-get update && sudo apt-get install sshpass
-      - run: apt-get update && apt-get install -y openssh-server
-      - run: ed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-      - run: mkdir /var/run/sshd
-      - run: /usr/sbin/sshd -D
+      - run: sudo apt-get update && sudo apt-get install sshpass && apt-get install -y openssh-server
+      - run: sudo ed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+      - run: sudo mkdir /var/run/sshd
+      - run: sudo /usr/sbin/sshd -D
 #      - run: sudo chmod +r /etc/ssh/ssh_known_hosts
       - run:
           name: Deploy over SSH
