@@ -25,8 +25,8 @@ jobs:
       - checkout
       - run: sudo apt-get update && sudo apt-get install sshpass
       - run:
-          name: Deploy over SSH
-          command: sudo sshpass -p $SSH_PASSWORD  ssh  -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST "docker ps"
+          name: Deploy to  the host with SSH
+          command: sudo sshpass -p $SSH_PASSWORD  ssh  -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST " ls"
 
 
 
