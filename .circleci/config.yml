@@ -18,21 +18,22 @@ jobs:
       - run:
           name: Package
           command: mvn clean package -DskipTests
-deploy:
-  machine:
-    enabled: true
-  steps:
-    - checkout
-    - run:
-        name: Deploy over SSH
-        command: ssh -p 22 root@root@185.215.186.235 "cd /opt/test; git pull; pm2 start hello_sts";
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy over SSH
+          command: ssh -p 22 root@root@185.215.186.235 "cd /opt/test; git pull; pm2 start hello_sts";
+
 
 
 
 workflows:
   build-and-test:
     jobs:
-     - test-java
+      - test-java
 #     - deploy:
 #         requires:
 #           - build
