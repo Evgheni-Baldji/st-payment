@@ -29,7 +29,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install sshpass
       - run:
           name: Deploy to  the host with SSH
-          command: sudo sshpass -p $SSH_PASSWORD  ssh  -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST " cd /opt/test/st-payment && git pull && docker build -t st-payment-1 . && docker run -td --name st-payment-1 -p 8081:8080 --restart unless-stopped st-payment-1"
+          command: sudo sshpass -p $SSH_PASSWORD  ssh  -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST " cd /opt/test/st-payment && git pull && docker build -t st-payment:${CIRCLE_BUILD_NUM} . && docker run -td --name st-payment -p 8081:8080 --restart unless-stopped st-payment:${CIRCLE_BUILD_NUM}"
 #
 
 
