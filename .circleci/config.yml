@@ -14,7 +14,7 @@ jobs:
                     sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
       - run:
           name: "get number of build "
-          command: echo ${CIRCLE_BRANCH}
+          command: echo ${CIRCLE_NUMBER}
       - run:
           name: Run tests
           command: mvn  clean test
