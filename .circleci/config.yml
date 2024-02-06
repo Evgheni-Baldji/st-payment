@@ -13,6 +13,9 @@ jobs:
             find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
                     sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
       - run:
+          name: "get number of build "
+          command: echo ${CIRCLE_BRANCH}
+      - run:
           name: Run tests
           command: mvn  clean test
       - run:
